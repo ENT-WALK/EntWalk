@@ -127,6 +127,7 @@ public class MapsActivity extends FragmentActivity implements
                             buildGoogleAPiClient();
                         }
                         mMap.setMyLocationEnabled(true);
+
                     }
 
                 }
@@ -157,22 +158,19 @@ public class MapsActivity extends FragmentActivity implements
         currentuserlocationMarker.remove();
     }
     LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+
     MarkerOptions markerOptions = new MarkerOptions();
     markerOptions.position(latLng);
     markerOptions.title("User Current Location");
     markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-    mMap.animateCamera(CameraUpdateFactory.zoomBy(18));
+
     currentuserlocationMarker = mMap.addMarker(markerOptions);
-
-
-
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,18));
     if(googleApiClient != null)
     {
         LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);
     }
-
-    }
+}
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {

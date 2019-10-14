@@ -18,4 +18,11 @@ public class Dashboard_Activity extends AppCompatActivity {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
+
+    public void leaderboard(View view) {
+        Intent intent = new Intent(this, JavaMysqlSelect.class);
+        startActivity(intent);
+    }
+
+
 }
