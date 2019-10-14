@@ -17,20 +17,20 @@ public class JavaMysqlSelect extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java_mysql_select);
     }
-
+/*
     public static void main(String[] args)
     {
         try
         {
             // create our mysql database connection
             String myDriver = "org.gjt.mm.mysql.Driver";
-            String myUrl = "jdbc:mysql://localhost/phpmyadmin/db_structure.php?server=1&db=entwalk";
+            String myUrl = "jdbc:mysql://localhost:8080/phpmyadmin/entwalk";
             Class.forName(myDriver);
             Connection conn = DriverManager.getConnection(myUrl, "root", "");
 
             // our SQL SELECT query.
             // if you only need a few columns, specify them by name instead of using "*"
-            String query = "SELECT * FROM users";
+            String query = "SELECT * FROM user";
 
             // create the java statement
             Statement st = conn.createStatement();
@@ -57,5 +57,5 @@ public class JavaMysqlSelect extends AppCompatActivity
             System.err.println(e.getMessage());
         }
     }
-
+*/
 }
