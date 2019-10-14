@@ -40,6 +40,7 @@
         android:layout_width="140dp"
         android:layout_height="132dp"
         android:background="@drawable/logout"
+        android:onClick="AR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

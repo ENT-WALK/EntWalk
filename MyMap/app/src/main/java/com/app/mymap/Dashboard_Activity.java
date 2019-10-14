@@ -12,10 +12,15 @@ public class Dashboard_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_);
+
     }
 
     public void google_map(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+    public void AR(View view) {
+        Intent intent = new Intent(this,ARActivity.class);
         startActivity(intent);
     }
 }
