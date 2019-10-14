@@ -65,20 +65,6 @@ public class MapsActivity extends FragmentActivity implements
             }
         });
 
-        Button buttonSatellite = (Button)findViewById(R.id.buttonSatellite);
-        buttonSatellite.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-            }
-        });
-
-        Button buttonTerrain = (Button)findViewById(R.id.buttonTerrain);
-        buttonTerrain.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-            }
-        });
-
         Button buttonHybrid = (Button)findViewById(R.id.buttonHybrid);
         buttonHybrid.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -175,11 +161,11 @@ public class MapsActivity extends FragmentActivity implements
     markerOptions.position(latLng);
     markerOptions.title("User Current Location");
     markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-
-    currentuserlocationMarker = mMap.addMarker(markerOptions);
-
     mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
     mMap.animateCamera(CameraUpdateFactory.zoomBy(18));
+    currentuserlocationMarker = mMap.addMarker(markerOptions);
+
+
 
     if(googleApiClient != null)
     {
