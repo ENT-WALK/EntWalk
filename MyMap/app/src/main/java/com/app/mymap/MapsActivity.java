@@ -3,21 +3,21 @@ package com.app.mymap;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import android.os.Build;
-import android.os.Bundle;
-import android.widget.Toast;
-
-
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApi;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -46,6 +46,7 @@ public class MapsActivity extends FragmentActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
@@ -53,11 +54,41 @@ public class MapsActivity extends FragmentActivity implements
         {
             checkUserLocationPermission();
         }
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+
+        Button buttonNormal = (Button)findViewById(R.id.buttonNormal);
+        buttonNormal.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            }
+        });
+
+        Button buttonSatellite = (Button)findViewById(R.id.buttonSatellite);
+        buttonSatellite.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            }
+        });
+
+        Button buttonTerrain = (Button)findViewById(R.id.buttonTerrain);
+        buttonTerrain.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+            }
+        });
+
+        Button buttonHybrid = (Button)findViewById(R.id.buttonHybrid);
+        buttonHybrid.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            }
+        });
+
+
         mapFragment.getMapAsync(this);
+
     }
 
 
@@ -69,6 +100,8 @@ public class MapsActivity extends FragmentActivity implements
             buildGoogleAPiClient();
 
             mMap.setMyLocationEnabled(true);
+            mMap.getUiSettings().setZoomControlsEnabled(true);
+
         }
     }
 
@@ -146,7 +179,7 @@ public class MapsActivity extends FragmentActivity implements
     currentuserlocationMarker = mMap.addMarker(markerOptions);
 
     mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-    mMap.animateCamera(CameraUpdateFactory.zoomBy(14));
+    mMap.animateCamera(CameraUpdateFactory.zoomBy(18));
 
     if(googleApiClient != null)
     {
