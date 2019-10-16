@@ -145,7 +145,7 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
             {
                 if(image.getName().equals("cat"))
                 {
-                    MyARNode node = new MyARNode(this,R.raw.cat);
+                    MyARNode node = new MyARNode(this,R.raw.superbean);
                     node.setImage(image);
                     arView.getScene().onAddChild(node);
                 }
