@@ -1,10 +1,10 @@
 package com.app.mymap;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Dashboard_Activity extends AppCompatActivity {
 
@@ -14,7 +14,6 @@ public class Dashboard_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard_);
 
     }
-
     public void google_map(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
@@ -25,6 +24,10 @@ public class Dashboard_Activity extends AppCompatActivity {
     }
     public void leaderboard(View view) {
         Intent intent = new Intent(this,JavaMysqlSelect.class);
+        startActivity(intent);
+    }
+    public void minigame(View view) {
+        Intent intent = new Intent(this, MiniGame.class);
         startActivity(intent);
     }
 }
