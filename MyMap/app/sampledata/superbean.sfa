@@ -1,0 +1,70 @@
+{
+  animations: [
+    {
+      path: 'sampledata/superbean.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material_32',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: '3',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/superbean.fbx',
+    name: 'superbean',
+    recenter: 'root',
+    scale: 40,
+  },
+  samplers: [
+    {
+      file: 'sampledata\\superbean.fbm\\3.png',
+      name: '3',
+      pipeline_name: 'superbean.fbm\\3.png',
+    },
+  ],
+  version: '0.54:2',
+}
