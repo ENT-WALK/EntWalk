@@ -30,4 +30,8 @@ public class Dashboard_Activity extends AppCompatActivity {
         Intent intent = new Intent(this, MiniGame.class);
         startActivity(intent);
     }
+    public void logout(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }

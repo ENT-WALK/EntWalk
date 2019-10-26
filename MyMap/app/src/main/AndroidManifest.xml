@@ -22,10 +22,27 @@
 
        <meta-data android:name="com.google.ar.core" android:value="required"/>
 
-
-        <activity android:name=".Dashboard_Activity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegisterActivity">
+            <intent-filter>
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".WelcomePage">
+            <intent-filter>
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Dashboard_Activity">
+            <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
