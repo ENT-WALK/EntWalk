@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "228019071338",
+    "firebase_url": "https://entwalk-app.firebaseio.com",
+    "project_id": "entwalk-app",
+    "storage_bucket": "entwalk-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228019071338:android:267c26c29bac5e4f621d13",
+        "android_client_info": {
+          "package_name": "com.app.mymap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228019071338-psh7j5b7ubngqcr7o6urmu1obdkbc0ul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.mymap",
+            "certificate_hash": "0069bef3f38c7b854c1146fd9981393390649c84"
+          }
+        },
+        {
+          "client_id": "228019071338-4qjqho15e8baus21hg0iergdhf1h1ab0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzmiUWbCBy3YXV3nWvlpEfVN5CLw_kcbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228019071338-4qjqho15e8baus21hg0iergdhf1h1ab0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
