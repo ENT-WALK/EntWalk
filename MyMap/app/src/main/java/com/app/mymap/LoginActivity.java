@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity {
+    public static String currentuser;
     FirebaseDatabase database;
     DatabaseReference users;
     EditText edtUsername,edtPassword;
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                     User login = dataSnapshot.child(username).getValue(User.class);
                     if(login.getPassword().equals(password)){
                         Toast.makeText(LoginActivity.this, "Success Login", Toast.LENGTH_SHORT).show();
+                        currentuser = username;
                         Intent intent = new Intent(getApplicationContext(), WelcomePage.class);
                         startActivity(intent);
                     }

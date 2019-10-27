@@ -1,5 +1,6 @@
 package com.app.mymap;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -16,12 +17,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.app.mymap.model.Leaderboard;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class MiniGame extends AppCompatActivity {
+    FirebaseDatabase database;
+    DatabaseReference Scoreboard;
+    String currentuser = LoginActivity.currentuser ;
 
     //Frame
     private FrameLayout gameFrame;
@@ -56,14 +67,13 @@ public class MiniGame extends AppCompatActivity {
     private boolean action_flg = false;
     private boolean pink_flg = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_minigame);
-
+        database = FirebaseDatabase.getInstance();
+        Scoreboard = database.getReference("Leaderboard");
         soundMinigame = new SoundMinigame(this);
-
         gameFrame = findViewById(R.id.gameFrame);
         startLayout = findViewById(R.id.startLayout);
         box = findViewById(R.id.box);
@@ -72,10 +82,8 @@ public class MiniGame extends AppCompatActivity {
         pink = findViewById(R.id.pink);
         scoreLabel = findViewById(R.id.scoreLabel);
         highScoreLabel = findViewById(R.id.highScoreLabel);
-
         imageBoxLeft = getResources().getDrawable(R.drawable.box_left);
         imageBoxRight = getResources().getDrawable(R.drawable.box_right);
-
         //High Score
         setting = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
         highScore = setting.getInt("HIGH_Score",6);
@@ -226,6 +234,19 @@ public class MiniGame extends AppCompatActivity {
             editor.putInt("HIGH_SCORE : ",highScore);
             editor.commit();
         }
+        final Leaderboard update = new Leaderboard(currentuser,highScore);
+        Scoreboard.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Scoreboard.child(update.getUsername()).setValue(update);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
