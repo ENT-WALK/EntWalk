@@ -24,5 +24,7 @@ public class Leaderboard {
     public void setscore(int username){
         this.highscore = highscore;
     }
-
+    public String toString(){
+        return "User " + this.username + " Score : " + highscore;
+    }
 }

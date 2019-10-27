@@ -86,8 +86,8 @@ public class MiniGame extends AppCompatActivity {
         imageBoxRight = getResources().getDrawable(R.drawable.box_right);
         //High Score
         setting = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
-        highScore = setting.getInt("HIGH_Score",6);
-        highScoreLabel.setText("HIGH_Score : " + highScore);
+        highScore = setting.getInt("High Score",highScore);
+        highScoreLabel.setText("High Score : " + highScore);
     }
 
     public void changePost(){
@@ -235,11 +235,11 @@ public class MiniGame extends AppCompatActivity {
             editor.commit();
         }
         final Leaderboard update = new Leaderboard(currentuser,highScore);
+
         Scoreboard.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Scoreboard.child(update.getUsername()).setValue(update);
-
             }
 
             @Override
