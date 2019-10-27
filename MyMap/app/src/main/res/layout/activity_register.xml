@@ -9,11 +9,11 @@
 
     <EditText
         android:id="@+id/edtUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/username"
+        android:layout_width="298dp"
+        android:layout_height="36dp"
+        android:background="@color/cardview_light_background"
         android:ems="10"
-        android:hint="      Username"
+        android:hint=" Username"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,29 +23,31 @@
 
     <EditText
         android:id="@+id/edtPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="298dp"
+        android:layout_height="36dp"
+        android:background="@color/cardview_light_background"
         android:ems="10"
+        android:hint=" Password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561"
-        android:background="@drawable/username"/>
+        app:layout_constraintVertical_bias="0.561" />
 
     <EditText
         android:id="@+id/edtEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="298dp"
+        android:layout_height="36dp"
+        android:background="@color/cardview_light_background"
         android:ems="10"
+        android:hint=" Email"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641"
-        android:background="@drawable/username"/>
+        app:layout_constraintVertical_bias="0.641" />
 
     <Button
         android:id="@+id/btnSignUp"
@@ -57,17 +59,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.798" />
-
-    <Button
-        android:id="@+id/btnSignIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign In"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

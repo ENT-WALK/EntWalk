@@ -6,89 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".MiniGame"
     android:orientation="vertical"
-    android:background="@drawable/wallbg">
+    android:background="@drawable/gamebg">
 
 
     <TextView
         android:id="@+id/scoreLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Score : 0"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:paddingVertical="14dp"
         android:layout_marginBottom="20dp"
+        android:background="#184472"
+        android:fontFamily="@font/arbutus"
         android:gravity="center"
-        android:background="@android:color/white"/>
+        android:paddingVertical="14dp"
+        android:text="Score : 0"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 
     <FrameLayout
         android:id="@+id/gameFrame"
         android:layout_width="260dp"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:background="@color/common_google_signin_btn_text_light_disabled">
+
 
         <ImageView
             android:id="@+id/box"
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:src="@drawable/box_right"
             android:layout_gravity="bottom"
-            android:visibility="invisible"/>
+            android:src="@drawable/box_right"
+            android:visibility="invisible" />
+
         <ImageView
             android:id="@+id/black"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/black"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
+
         <ImageView
             android:id="@+id/orange"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/orange"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
+
         <ImageView
             android:id="@+id/pink"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/pink"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <LinearLayout
             android:id="@+id/startLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_gravity="center">
+            android:orientation="vertical">
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/arbutus"
                 android:text="Catch Ball"
-                android:textSize="24sp"
-                android:layout_marginTop="20dp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
             <TextView
                 android:id="@+id/highScoreLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:fontFamily="@font/arbutus"
                 android:text="High Score : 300"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp"
-                android:textStyle="bold"
-                android:layout_marginTop="80dp"/>
+                android:textStyle="bold" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="START"
                 android:layout_marginTop="60dp"
-                android:onClick="startGame"/>
+                android:background="@drawable/btn_game_start"
+                android:onClick="startGame"
+                android:shadowColor="#F5F5F5" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quit"
                 android:layout_marginTop="20dp"
-                android:onClick="quitGame"/>
+                android:background="@drawable/btn_game_quit"
+                android:onClick="quitGame" />
 
         </LinearLayout>
 

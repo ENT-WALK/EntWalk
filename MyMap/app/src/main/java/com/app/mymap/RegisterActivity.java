@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference users;
     EditText edtUsername,edtPassword,edtMail;
-    Button btnSignUp,btnSignIn;
+    Button btnSignUp;
 
 
     @Override
@@ -36,16 +36,6 @@ public class RegisterActivity extends AppCompatActivity {
         edtPassword = (EditText)findViewById(R.id.edtPassword);
         edtMail = (EditText)findViewById(R.id.edtEmail);
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        btnSignIn = (Button) findViewById(R.id.btnSignIn);
-
-
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
         @Override
