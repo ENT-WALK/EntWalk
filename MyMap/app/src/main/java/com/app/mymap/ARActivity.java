@@ -116,13 +116,19 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
 
     private boolean buildDatabase(Config config) {
         AugmentedImageDatabase augmentedImageDatabase;
-        Bitmap bitmap = loadImage();
+       /* Bitmap bitmap = loadImage();
         if(bitmap == null)
-        return false;
-        augmentedImageDatabase = new AugmentedImageDatabase(session);
-        augmentedImageDatabase.addImage("cat",bitmap);
-        config.setAugmentedImageDatabase(augmentedImageDatabase);
-        return true;
+        return false;*/
+        try {
+            InputStream inputStream = getAssets().open("edmtdev.imgdb");
+            augmentedImageDatabase = AugmentedImageDatabase.deserialize(session,inputStream);
+            config.setAugmentedImageDatabase(augmentedImageDatabase);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 
     private Bitmap loadImage() {
@@ -143,9 +149,39 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
         {
             if(image.getTrackingState() == TrackingState.TRACKING)
             {
-                if(image.getName().equals("cat"))
+                if(image.getName().equals("cat_qr.jpeg"))
                 {
                     MyARNode node = new MyARNode(this,R.raw.superbean);
+                    node.setImage(image);
+                    arView.getScene().onAddChild(node);
+                }
+                else if(image.getName().equals("up.jpeg"))
+                {
+                    MyARNode node = new MyARNode(this,R.raw.up);
+                    node.setImage(image);
+                    arView.getScene().onAddChild(node);
+                }
+                else if(image.getName().equals("down.jpeg"))
+                {
+                    MyARNode node = new MyARNode(this,R.raw.down);
+                    node.setImage(image);
+                    arView.getScene().onAddChild(node);
+                }
+                else if(image.getName().equals("left.jpeg"))
+                {
+                    MyARNode node = new MyARNode(this,R.raw.left);
+                    node.setImage(image);
+                    arView.getScene().onAddChild(node);
+                }
+                else if(image.getName().equals("right.jpeg"))
+                {
+                    MyARNode node = new MyARNode(this,R.raw.right);
+                    node.setImage(image);
+                    arView.getScene().onAddChild(node);
+                }
+                else if(image.getName().equals("end.jpeg"))
+                {
+                    MyARNode node = new MyARNode(this,R.raw.dog);
                     node.setImage(image);
                     arView.getScene().onAddChild(node);
                 }

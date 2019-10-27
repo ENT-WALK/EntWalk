@@ -42,7 +42,7 @@ public class MyARNode extends AnchorNode {
         setAnchor(image.createAnchor(image.getCenterPose()));
 
          Node node = new Node();
-         Pose pose = Pose.makeTranslation(0.0f,0.0f,0.25f);
+         Pose pose = Pose.makeTranslation(0.0f,0.0f,0.0f);
 
          node.setParent(this);
          node.setLocalPosition(new Vector3(pose.tx(),pose.ty(),pose.tz()));

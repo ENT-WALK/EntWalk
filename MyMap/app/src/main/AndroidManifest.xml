@@ -24,6 +24,7 @@
 
         <activity android:name=".LoginActivity">
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -58,7 +59,6 @@
 
         <activity android:name=".ARActivity">
             <intent-filter>
-
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

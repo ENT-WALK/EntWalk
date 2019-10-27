@@ -63,3 +63,24 @@ sceneform.asset('sampledata/superbean.fbx',
         'default',
         'sampledata/superbean.sfa',
         'src/main/res/raw/superbean')
+
+
+sceneform.asset('sampledata/down.fbx',
+        'default',
+        'sampledata/down.sfa',
+        'src/main/res/raw/down')
+
+sceneform.asset('sampledata/left.fbx',
+        'default',
+        'sampledata/left.sfa',
+        'src/main/res/raw/left')
+
+sceneform.asset('sampledata/right.fbx',
+        'default',
+        'sampledata/right.sfa',
+        'src/main/res/raw/right')
+
+sceneform.asset('sampledata/up.fbx',
+        'default',
+        'sampledata/up.sfa',
+        'src/main/res/raw/up')
