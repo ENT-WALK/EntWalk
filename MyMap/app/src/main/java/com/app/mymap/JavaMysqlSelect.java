@@ -2,6 +2,7 @@ package com.app.mymap;
 import com.app.mymap.model.Leaderboard;
 
 import android.os.Bundle;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -25,14 +26,20 @@ public class JavaMysqlSelect extends AppCompatActivity
     ListView listView;
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
-   @Override
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java_mysql_select);
         databaseReference=FirebaseDatabase.getInstance().getReference("Leaderboard");
         listView = (ListView) findViewById(R.id.listview);
-        arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList);
+
+        //ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_java_mysql_select,arrayList);
+        arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_activated_1,arrayList);
+
+        //ListView listView = (ListView) findViewById(R.id.window_list);
+
         listView.setAdapter(arrayAdapter);
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override

@@ -5,31 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JavaMysqlSelect">
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context=".JavaMysqlSelect"
+    android:background="@drawable/leaderboardbg">
 
-    <TextView
-        android:id="@+id/txt"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:text="LEADERBOARD"
-        android:textAlignment="center"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.084" />
 
     <ListView
         android:id="@+id/listview"
-        android:layout_width="303dp"
-        android:layout_height="367dp"
-        android:layout_marginTop="236dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="323dp"
+        android:layout_height="639dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="148dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
