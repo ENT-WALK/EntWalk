@@ -1,6 +1,7 @@
 package com.app.mymap;
 
 import android.Manifest;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -141,6 +142,7 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
         return  null;
     }
 
+
     @Override
     public void onUpdate(FrameTime frameTime) {
         Frame frame = arView.getArFrame();
@@ -181,9 +183,8 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
                 }
                 else if(image.getName().equals("end.jpeg"))
                 {
-                    MyARNode node = new MyARNode(this,R.raw.dog);
-                    node.setImage(image);
-                    arView.getScene().onAddChild(node);
+                    Intent intent = new Intent(ARActivity.this, MiniGame.class);
+                    ARActivity.this.startActivity(intent);
                 }
             }
         }
