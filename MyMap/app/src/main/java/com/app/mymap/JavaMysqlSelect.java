@@ -44,8 +44,9 @@ public class JavaMysqlSelect extends AppCompatActivity
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String value = dataSnapshot.getValue().toString();
-                arrayList.add(value);
+                String username = dataSnapshot.child("username").getValue().toString();
+                String value = dataSnapshot.child("score").getValue().toString();
+                arrayList.add(username+ " score is " + value);
                 arrayAdapter.notifyDataSetChanged();
             }
 
