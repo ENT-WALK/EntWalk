@@ -1,6 +1,7 @@
 package com.app.mymap;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -18,10 +19,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.mymap.model.Leaderboard;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Time;
@@ -66,6 +69,7 @@ public class MiniGame extends AppCompatActivity {
     private boolean start_flg = false;
     private boolean action_flg = false;
     private boolean pink_flg = false;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +90,32 @@ public class MiniGame extends AppCompatActivity {
         imageBoxRight = getResources().getDrawable(R.drawable.box_right);
         //High Score
         setting = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
-        highScore = setting.getInt("High Score",highScore);
-        highScoreLabel.setText("High Score : " + highScore);
-    }
+        Query query = Scoreboard.orderByChild("username").equalTo(currentuser);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot child : dataSnapshot.getChildren()){
 
+                        String str = child.getValue().toString();
+                        String str2= str.replaceAll("\\{score=", "");
+                        String str3= str2.replaceAll("\\, username="+currentuser+"\\}", "");
+                        System.out.println(str3);
+                        highScore = Integer.parseInt(str3);
+                        highScore = setting.getInt("High Score",highScore);
+                        highScoreLabel.setText("High Score : " + highScore);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
     public void changePost(){
 
         //add timeCount

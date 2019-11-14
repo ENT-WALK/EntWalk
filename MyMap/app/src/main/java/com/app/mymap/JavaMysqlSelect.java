@@ -2,6 +2,7 @@ package com.app.mymap;
 import com.app.mymap.model.Leaderboard;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -15,11 +16,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-
+import java.util.Scanner;
 public class JavaMysqlSelect extends AppCompatActivity
 {
     DatabaseReference databaseReference;
@@ -33,47 +38,31 @@ public class JavaMysqlSelect extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_java_mysql_select);
         databaseReference=FirebaseDatabase.getInstance().getReference("Leaderboard");
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         listView = (ListView) findViewById(R.id.listview);
-
-        //ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_java_mysql_select,arrayList);
         arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_activated_1,arrayList);
-
-        //ListView listView = (ListView) findViewById(R.id.window_list);
-
         listView.setAdapter(arrayAdapter);
-        databaseReference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String username = dataSnapshot.child("username").getValue().toString();
-                String value = dataSnapshot.child("score").getValue().toString();
-                arrayList.add(username+ " score is " + value);
-                arrayAdapter.notifyDataSetChanged();
-            }
+            mDatabase.child("Leaderboard").orderByChild("score").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot child: dataSnapshot.getChildren()){
+                        String str = child.getValue().toString();
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        String str2= str.replaceAll("\\{", "");
+                        String str3= str2.replaceAll("\\, username="+child.getKey()+"\\}", "");
+                        arrayList.add("  "+ child.getKey()+ "  " +str3);
 
-            }
+                    }
+                    Collections.reverse(arrayList);
+                    arrayAdapter.notifyDataSetChanged();
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                }
 
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-
+                }
+            });
    }
 
 }
