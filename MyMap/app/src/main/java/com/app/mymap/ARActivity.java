@@ -183,7 +183,7 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
                 }
                 else if(image.getName().equals("end.jpeg"))
                 {
-                    Intent intent = new Intent(ARActivity.this, MiniGame.class);
+                    Intent intent = new Intent(ARActivity.this, Finish.class);
                     ARActivity.this.startActivity(intent);
                 }
             }
