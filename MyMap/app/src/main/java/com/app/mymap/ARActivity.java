@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -142,52 +144,41 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
         return  null;
     }
 
-
+    MyARNode node = null;
     @Override
     public void onUpdate(FrameTime frameTime) {
         Frame frame = arView.getArFrame();
         Collection<AugmentedImage> updateAugmentedImg = frame.getUpdatedTrackables(AugmentedImage.class);
-        for(AugmentedImage image:updateAugmentedImg)
-        {
-            if(image.getTrackingState() == TrackingState.TRACKING)
-            {
-                if(image.getName().equals("cat_qr.jpeg"))
-                {
-                    MyARNode node = new MyARNode(this,R.raw.superbean);
-                    node.setImage(image);
-                    arView.getScene().onAddChild(node);
-                }
-                else if(image.getName().equals("up.jpeg"))
-                {
-                    MyARNode node = new MyARNode(this,R.raw.up);
-                    node.setImage(image);
-                    arView.getScene().onAddChild(node);
-                }
-                else if(image.getName().equals("down.jpeg"))
-                {
-                    MyARNode node = new MyARNode(this,R.raw.down);
-                    node.setImage(image);
-                    arView.getScene().onAddChild(node);
-                }
-                else if(image.getName().equals("left.jpeg"))
-                {
-                    MyARNode node = new MyARNode(this,R.raw.left);
-                    node.setImage(image);
-                    arView.getScene().onAddChild(node);
-                }
-                else if(image.getName().equals("right.jpeg"))
-                {
-                    MyARNode node = new MyARNode(this,R.raw.right);
-                    node.setImage(image);
-                    arView.getScene().onAddChild(node);
-                }
-                else if(image.getName().equals("end.jpeg"))
-                {
-                    Intent intent = new Intent(ARActivity.this, Finish.class);
-                    ARActivity.this.startActivity(intent);
+        if (node == null){
+            for (AugmentedImage image : updateAugmentedImg) {
+                if ((image.getTrackingState() == TrackingState.TRACKING)) {
+                    if (image.getName().equals("cat_qr.jpeg")) {
+                        node = new MyARNode(this, R.raw.superbean);
+                        node.setImage(image);
+                        arView.getScene().onAddChild(node);
+                    } else if (image.getName().equals("up.jpeg")) {
+                        node = new MyARNode(this, R.raw.up);
+                        node.setImage(image);
+                        arView.getScene().onAddChild(node);
+                    } else if (image.getName().equals("down.jpeg")) {
+                        node = new MyARNode(this, R.raw.down);
+                        node.setImage(image);
+                        arView.getScene().onAddChild(node);
+                    } else if (image.getName().equals("left.jpeg")) {
+                        node = new MyARNode(this, R.raw.left);
+                        node.setImage(image);
+                        arView.getScene().onAddChild(node);
+                    } else if (image.getName().equals("right.jpeg")) {
+                        node = new MyARNode(this, R.raw.right);
+                        node.setImage(image);
+                        arView.getScene().onAddChild(node);
+                    } else if (image.getName().equals("end.jpeg")) {
+                        Intent intent = new Intent(ARActivity.this, Finish.class);
+                        ARActivity.this.startActivity(intent);
+                    }
                 }
             }
-        }
+    }
     }
 
     @Override
@@ -222,5 +213,8 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
             arView.pause();
             session.pause();
         }
+    }
+    public void refresh(View view){
+        Toast.makeText(getApplicationContext(),"Refresh", Toast.LENGTH_SHORT).show();
     }
 }
