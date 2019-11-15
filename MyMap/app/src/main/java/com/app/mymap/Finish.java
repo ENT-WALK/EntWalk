@@ -22,7 +22,7 @@ public class Finish extends AppCompatActivity {
 
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(Finish.this);
-        builder.setMessage("INSTRUCTION");
+        builder.setMessage("Show this logo to receive rewards");
         builder.setPositiveButton("UNDERSTAND", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();

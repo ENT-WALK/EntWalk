@@ -53,4 +53,6 @@ public class MyARNode extends AnchorNode {
      public AugmentedImage getImage(){
         return image;
      }
+
+     public void delete (){modelRenderableCompletableFuture = null;}
 }

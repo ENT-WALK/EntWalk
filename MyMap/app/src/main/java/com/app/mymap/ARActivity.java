@@ -4,9 +4,9 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +34,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Parameter;
 import java.util.Collection;
 
 public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListener {
@@ -41,12 +42,10 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
     private ArSceneView arView;
     private Session session;
     private boolean shouldConfigureSession=false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar);
-
         //view
         arView = (ArSceneView)findViewById(R.id.arView);
         //Request Premission
@@ -70,11 +69,9 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
                 }).check();
         initSceneView();
     }
-
     private void initSceneView() {
         arView.getScene().addOnUpdateListener(this);
     }
-
     private void setupSession() {
         if(session == null)
         {
@@ -106,7 +103,6 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
             return;
         }
     }
-
     private void configSession() {
         Config config = new Config(session);
         if(!buildDatabase(config))
@@ -116,7 +112,6 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
         config.setUpdateMode(Config.UpdateMode.LATEST_CAMERA_IMAGE);
         session.configure(config);
     }
-
     private boolean buildDatabase(Config config) {
         AugmentedImageDatabase augmentedImageDatabase;
        /* Bitmap bitmap = loadImage();
@@ -133,7 +128,6 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
         }
 
     }
-
     private Bitmap loadImage() {
         try {
             InputStream is = getAssets().open("cat_qr.jpeg");
@@ -151,6 +145,7 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
         Collection<AugmentedImage> updateAugmentedImg = frame.getUpdatedTrackables(AugmentedImage.class);
         if (node == null){
             for (AugmentedImage image : updateAugmentedImg) {
+
                 if ((image.getTrackingState() == TrackingState.TRACKING)) {
                     if (image.getName().equals("cat_qr.jpeg")) {
                         node = new MyARNode(this, R.raw.superbean);
@@ -178,7 +173,7 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
                     }
                 }
             }
-    }
+        }
     }
 
     @Override
@@ -215,6 +210,11 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
         }
     }
     public void refresh(View view){
-        Toast.makeText(getApplicationContext(),"Refresh", Toast.LENGTH_SHORT).show();
+        if(node != null) {
+            node.delete();
+            finish();
+            startActivity(getIntent());
+        }
+        Toast.makeText(getApplicationContext(), "Refresh", Toast.LENGTH_SHORT).show();
     }
 }
