@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/arbutus"
-                android:text="Catch Ball"
+                android:text="Catch Coin"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
 

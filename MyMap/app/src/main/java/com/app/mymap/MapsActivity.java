@@ -87,8 +87,9 @@ public class MapsActivity extends FragmentActivity implements
 
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setZoomControlsEnabled(true);
+            mMap.getUiSettings().setCompassEnabled(true);
 
-        }
+                 }
     }
 
     public boolean checkUserLocationPermission()
