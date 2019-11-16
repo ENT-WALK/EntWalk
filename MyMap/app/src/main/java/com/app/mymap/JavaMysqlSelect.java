@@ -25,6 +25,8 @@ public class JavaMysqlSelect extends AppCompatActivity
     DatabaseReference databaseReference;
     ListView listView;
     ArrayList<String> arrayList = new ArrayList<>();
+    ArrayList<String> arrayList2 = new ArrayList<>();
+
     ArrayAdapter<String> arrayAdapter;
 
     @Override
@@ -35,7 +37,7 @@ public class JavaMysqlSelect extends AppCompatActivity
         databaseReference=FirebaseDatabase.getInstance().getReference("Leaderboard");
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         listView = (ListView) findViewById(R.id.listview);
-        arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_activated_1,arrayList);
+        arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_activated_1,arrayList2);
         listView.setAdapter(arrayAdapter);
             mDatabase.child("Leaderboard").orderByChild("score").addValueEventListener(new ValueEventListener() {
                 @Override
@@ -49,6 +51,10 @@ public class JavaMysqlSelect extends AppCompatActivity
 
                     }
                     Collections.reverse(arrayList);
+                    for(int i=0;i<8;i++){
+                        if(arrayList.get(i).isEmpty()){break;}
+                        arrayList2.add(arrayList.get(i));
+                    }
                     arrayAdapter.notifyDataSetChanged();
 
                 }
