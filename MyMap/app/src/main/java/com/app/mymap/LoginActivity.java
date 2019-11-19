@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
                 else if(username.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Password is Not Registered", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Username is Not Registered", Toast.LENGTH_SHORT).show();
                 }
                 }
             }

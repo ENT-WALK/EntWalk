@@ -150,6 +150,7 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
                         node = new MyARNode(this, R.raw.superbean);
                         node.setImage(image);
                         arView.getScene().onAddChild(node);
+                            Toast.makeText(ARActivity.this, "Wrong Way!!!", Toast.LENGTH_LONG).show();
                     } else if (image.getName().equals("up.jpeg")) {
                         node = new MyARNode(this, R.raw.up);
                         node.setImage(image);
