@@ -1,7 +1,6 @@
 package com.app.mymap;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -19,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.mymap.model.Leaderboard;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

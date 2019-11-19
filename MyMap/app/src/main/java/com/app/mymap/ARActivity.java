@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.hardware.Camera;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -34,7 +33,6 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Parameter;
 import java.util.Collection;
 
 public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListener {
@@ -46,6 +44,7 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar);
+
         //view
         arView = (ArSceneView)findViewById(R.id.arView);
         //Request Premission

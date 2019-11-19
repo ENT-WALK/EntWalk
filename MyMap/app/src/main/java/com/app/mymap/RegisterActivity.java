@@ -11,7 +11,6 @@ package com.app.mymap;
         import androidx.appcompat.app.AppCompatActivity;
 
         import com.app.mymap.model.User;
-        import com.google.firebase.database.ChildEventListener;
         import com.google.firebase.database.DataSnapshot;
         import com.google.firebase.database.DatabaseError;
         import com.google.firebase.database.DatabaseReference;

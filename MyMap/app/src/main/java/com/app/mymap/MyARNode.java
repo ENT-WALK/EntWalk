@@ -3,7 +3,6 @@ package com.app.mymap;
 
 import android.content.Context;
 
-import com.google.ar.core.Anchor;
 import com.google.ar.core.AugmentedImage;
 import com.google.ar.core.Pose;
 import com.google.ar.sceneform.AnchorNode;
