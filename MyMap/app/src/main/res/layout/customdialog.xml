@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout4"
-    android:layout_width="1000px"
-    android:layout_height="1500px"
+    android:layout_width="1300px"
+    android:layout_height="2500px"
     android:background="@drawable/guide">
 
     <Button
