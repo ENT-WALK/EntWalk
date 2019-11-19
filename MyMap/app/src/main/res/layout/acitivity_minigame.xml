@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
                 android:fontFamily="@font/arbutus"
-                android:text="High Score : 300"
+                android:text="High Score : 0"
                 android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 android:textStyle="bold" />
