@@ -144,32 +144,37 @@ public class ARActivity extends AppCompatActivity implements Scene.OnUpdateListe
         Collection<AugmentedImage> updateAugmentedImg = frame.getUpdatedTrackables(AugmentedImage.class);
         if (node == null){
             for (AugmentedImage image : updateAugmentedImg) {
-
                 if ((image.getTrackingState() == TrackingState.TRACKING)) {
                     if (image.getName().equals("cat_qr.jpeg")) {
                         node = new MyARNode(this, R.raw.superbean);
                         node.setImage(image);
                         arView.getScene().onAddChild(node);
                             Toast.makeText(ARActivity.this, "Wrong Way!!!", Toast.LENGTH_LONG).show();
+                            break;
                     } else if (image.getName().equals("up.jpeg")) {
                         node = new MyARNode(this, R.raw.up);
                         node.setImage(image);
                         arView.getScene().onAddChild(node);
+                        break;
                     } else if (image.getName().equals("down.jpeg")) {
                         node = new MyARNode(this, R.raw.down);
                         node.setImage(image);
                         arView.getScene().onAddChild(node);
+                        break;
                     } else if (image.getName().equals("left.jpeg")) {
                         node = new MyARNode(this, R.raw.left);
                         node.setImage(image);
                         arView.getScene().onAddChild(node);
+                        break;
                     } else if (image.getName().equals("right.jpeg")) {
                         node = new MyARNode(this, R.raw.right);
                         node.setImage(image);
                         arView.getScene().onAddChild(node);
+                        break;
                     } else if (image.getName().equals("end.jpeg")) {
                         Intent intent = new Intent(ARActivity.this, Finish.class);
                         ARActivity.this.startActivity(intent);
+                        break;
                     }
                 }
             }
